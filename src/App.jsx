@@ -25,8 +25,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#fdf6ec] p-4 md:p-8">
-      <div className="mx-auto w-full max-w-5xl">
+    <div className="flex min-h-screen w-full items-center justify-center bg-[#fdf6ec] p-4 md:p-8">
+      <div className="w-full max-w-5xl">
         {/* TAB NAV */}
         <div className="mb-5 flex justify-center">
           <div className="inline-flex gap-1 rounded-2xl bg-white p-1.5 shadow-sm">

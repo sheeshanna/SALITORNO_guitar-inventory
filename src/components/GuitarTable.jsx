@@ -51,7 +51,6 @@ function GuitarTable({
   onSelectRow,
   onGoToRegister,
 }) {
-
   const [roleFilter, setRoleFilter] = useState("all");
 
   const filteredItems = useMemo(() => {
@@ -77,7 +76,7 @@ function GuitarTable({
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
-      pagination: { pageSize: 4 },
+      pagination: { pageSize: 5 },
     },
   });
 
@@ -135,11 +134,11 @@ function GuitarTable({
             <div className="space-y-2">
               <div className="hidden grid-cols-[1.4fr_1fr_1fr_1fr_1.4fr_1fr] gap-3 px-4 text-xs font-bold uppercase tracking-wide text-[#8a6d8a] md:grid">
                 <span>Guitar Model</span>
-                <span>Body Type</span>
-                <span>Brand</span>
-                <span>Stock</span>
-                <span>Manufacturer</span>
-                <span>Role</span>
+                <span className="text-center">Body Type</span>
+                <span className="text-center">Brand</span>
+                <span className="text-center">Stock</span>
+                <span className="text-center">Manufacturer</span>
+                <span className="text-center">Role</span>
               </div>
 
               {table.getRowModel().rows.map((row) => {
@@ -161,7 +160,7 @@ function GuitarTable({
                       {item.model}
                     </div>
 
-                    <div className="flex items-center gap-1.5 text-sm text-[#3d1f3d]">
+                    <div className="flex items-center justify-center gap-1.5 text-sm text-[#3d1f3d]">
                       <BodyIcon
                         size={13}
                         strokeWidth={2.3}
@@ -170,18 +169,22 @@ function GuitarTable({
                       {item.bodyType}
                     </div>
 
-                    <div className="text-sm text-[#3d1f3d]">{item.brand}</div>
+                    <div className="text-center text-sm text-[#3d1f3d]">
+                      {item.brand}
+                    </div>
 
-                    <StockBar stock={item.stock} />
+                    <div className="flex justify-center">
+                      <StockBar stock={item.stock} />
+                    </div>
 
                     <div
-                      className="truncate text-sm text-[#3d1f3d]"
+                      className="truncate text-center text-sm text-[#3d1f3d]"
                       title={item.manufacturer}
                     >
                       {item.manufacturer}
                     </div>
 
-                    <div>
+                    <div className="flex justify-center">
                       <span
                         className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold ${
                           item.role === "Merchant"
@@ -231,7 +234,6 @@ function GuitarTable({
           </>
         )}
       </div>
-
 
       <DetailCard item={selectedItem} />
     </div>

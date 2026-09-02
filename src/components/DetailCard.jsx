@@ -9,13 +9,6 @@ import {
   MousePointerClick,
 } from "lucide-react";
 
-const BODY_TYPE_COLORS = {
-  Electric: "text-[#e07a5f]",
-  Acoustic: "text-[#c98a4b]",
-  Bass: "text-[#8a6d8a]",
-  Classical: "text-[#3d1f3d]",
-};
-
 function DetailCard({ item }) {
   if (!item) {
     return (
@@ -33,42 +26,37 @@ function DetailCard({ item }) {
   }
 
   return (
-    <div className="rounded-[28px] bg-white p-6 shadow-lg">
-    
-      <div className="mb-5 flex items-start justify-between">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-wide text-[#8a6d8a]">
-            Active Item
-          </p>
-          <h3 className="mt-0.5 text-lg font-extrabold leading-tight text-[#3d1f3d]">
+    <div className="overflow-hidden rounded-[28px] bg-white shadow-lg">
+
+      <div className="bg-[#3d1f3d] px-6 py-5">
+        <p className="text-[11px] font-bold uppercase tracking-wider text-white/60">
+          Active Item
+        </p>
+        <div className="mt-1 flex items-center justify-between gap-2">
+          <h3 className="truncate text-lg font-extrabold leading-tight text-white">
             {item.model}
           </h3>
+          <span
+            className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold ${
+              item.role === "Merchant"
+                ? "bg-[#e07a5f] text-white"
+                : "bg-white/15 text-white"
+            }`}
+          >
+            {item.role === "Merchant" ? (
+              <Store size={12} strokeWidth={2.5} />
+            ) : (
+              <Headphones size={12} strokeWidth={2.5} />
+            )}
+            {item.role}
+          </span>
         </div>
-        <span
-          className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold ${
-            item.role === "Merchant"
-              ? "bg-[#e07a5f]/15 text-[#e07a5f]"
-              : "bg-[#3d1f3d]/10 text-[#3d1f3d]"
-          }`}
-        >
-          {item.role === "Merchant" ? (
-            <Store size={12} strokeWidth={2.5} />
-          ) : (
-            <Headphones size={12} strokeWidth={2.5} />
-          )}
-          {item.role}
-        </span>
       </div>
 
-     
-      <div className="space-y-3.5">
+      <div className="space-y-4 p-6">
         <div className="flex items-center gap-3">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#fdf6ec]">
-            <Tag
-              size={15}
-              strokeWidth={2.2}
-              className={BODY_TYPE_COLORS[item.bodyType] || "text-[#8a6d8a]"}
-            />
+            <Tag size={15} strokeWidth={2.2} className="text-[#e07a5f]" />
           </div>
           <div>
             <p className="text-[10px] font-bold uppercase tracking-wide text-[#8a6d8a]">
@@ -134,7 +122,7 @@ function DetailCard({ item }) {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 border-t border-[#f0ddc4] pt-4">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#fdf6ec]">
             <Guitar size={15} strokeWidth={2.2} className="text-[#e07a5f]" />
           </div>

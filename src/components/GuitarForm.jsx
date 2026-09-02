@@ -133,7 +133,6 @@ function GuitarForm({ itemsCount, onRegister }) {
 
   return (
     <div className="mx-auto flex w-full flex-col overflow-hidden rounded-[32px] bg-white shadow-xl transition-shadow duration-300 hover:shadow-2xl md:flex-row">
-      
       <div className="relative flex flex-col justify-between overflow-hidden bg-[#3d1f3d] p-8 text-white md:w-2/5 md:p-10">
         <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#e07a5f]/20" />
         <div className="absolute -bottom-16 -left-10 h-48 w-48 rounded-full bg-[#f4a261]/10" />
@@ -144,9 +143,10 @@ function GuitarForm({ itemsCount, onRegister }) {
             <Guitar size={26} strokeWidth={2} />
           </div>
           <h1 className="text-2xl font-extrabold leading-tight md:text-3xl">
-            Guitar Store
+            Sheeshanna
             <br />
-            Inventory
+            Guitar Store 
+            <br className="hidden sm:inline" /> Inventory
           </h1>
           <p className="mt-3 text-sm leading-6 text-white/70">
             Register every guitar that comes through the shop — model, body
@@ -166,7 +166,6 @@ function GuitarForm({ itemsCount, onRegister }) {
         </div>
       </div>
 
-      
       <div className="flex-1 p-7 md:p-10">
         <form onSubmit={handleSubmit} noValidate className="space-y-4">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
