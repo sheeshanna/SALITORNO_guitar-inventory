@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -52,6 +52,11 @@ function GuitarTable({
   onGoToRegister,
 }) {
   const [roleFilter, setRoleFilter] = useState("all");
+  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
+
+  useEffect(() => {
+    setPagination((prev) => ({ ...prev, pageIndex: 0 }));
+  }, [roleFilter]);
 
   const filteredItems = useMemo(() => {
     if (roleFilter === "all") return items;
@@ -73,11 +78,12 @@ function GuitarTable({
   const table = useReactTable({
     data: filteredItems,
     columns,
+    state: {
+      pagination,
+    },
+    onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    initialState: {
-      pagination: { pageSize: 5 },
-    },
   });
 
   return (

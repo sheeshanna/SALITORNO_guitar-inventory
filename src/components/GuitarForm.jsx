@@ -43,6 +43,7 @@ function GuitarForm({ itemsCount, onRegister }) {
       case "stock": {
         if (value === "") return "Stock quantity is required.";
         const num = Number(value);
+        if (!Number.isInteger(num)) return "Must be a whole number.";
         if (num < 1 || num > 100) return "Must be between 1 and 100.";
         return "";
       }
